@@ -1,3 +1,8 @@
+학습용 DaumBnB 정보 사이트
+
+최종결과물
+https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/complated.php
+
 오픈API를 이용한 간단한 페이지를 학습하고 이해합니다.
 페이지는 검색API, 로컬API, 지도API를 사용합니다.
 
