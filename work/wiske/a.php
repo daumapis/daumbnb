@@ -38,13 +38,27 @@
     <!-- TODO : 코딩 시작 -->
     <div class="jumbotron">
       <div class="container">
-       <h1 style="height:200px;float:left;background-image:url('http://focus.chosun.com/upimg/com/10000/c384.jpg');">Daum BnB</h1>
-        <img src="" alt="..." class="img-rounded">
         <h1>Welcome:D Magic The Gathering!</h1>
         <p>본사이트는 전세계 어디서나 Magic The Gathering 관련 정보를 찾는 사이트입니다.</p>
       </div>
+      <script>
+                (function() {
+                    window._dcs=window._dcs||{};
+                    window._dcs.siteUrl = 'http://example.com';
+                    window._dcs.searchOrder = ["site","cafe","blog","image","board","vclip","web","book","knowledge"];
+                    window._dcs.searchboxtheme = 'default';
+                    window._dcs.searchresulttheme = 'overlay';
+                    var dcss = document.createElement('script');
+                    dcss.type = 'text/javascript';
+                    dcss.async = true;
+                    dcss.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                        '//dna.daum.net/include/tools/playground/CustomSearch/cs.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(dcss, s);
+                })();
+        </script>
+    <div id="daum_customsearch_wrap"></div>
     </div>
-
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
@@ -63,6 +77,9 @@
         </div>
       <?php } //end foreach   ?> 
       <div class="clear" style="clear:both" />
+      
+     
+      
     <!-- 코딩 구역 끝 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -63,23 +63,17 @@ $image = searchDaum('image');
       <div class="clear" style="clear:both"/>
       <br /><br /><br />
 
-      <span style="color: gray; font-size: 13px;">블로그</span>
+    <span style="color: gray; font-size: 13px;">블로그</span>
     <div style="width: 1100px; height: 1px; background-color: gray; margin: 10px 0;"></div>
-    
-      <div class="row">
-        <?php foreach($blogs->item as $value) { //start foreache ?>
-        <div class="col-md-4" style="height:300px;">
-        
-            <div class="panel panel-warning">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo $value->title; ?></h3>
-                </div>
-                <div class="panel-body">
-                    <?php echo "내용: ".$value->description; ?>
-                    <p><a class="btn btn-default" href="<?php echo $value->link; ?>" role="button" target="_blank">View details &raquo;</a></p>
-                </div>
+       
+       <?php foreach($blogs->item as $value) { //start foreache ?>
+            <a  href="<?php echo $value->link; ?>" target="_blank">
+                <h3 class="panel-title"><?php echo $value->title; ?></h3>
+            </a>
+            <div style="color: black">
+                <?php echo "내용: ".$value->description; ?>        
             </div>
-        </div>
+            <br />
       <?php } //end foreach   ?> 
       <div class="clear" style="clear:both" />
     

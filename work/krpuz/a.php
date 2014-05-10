@@ -47,9 +47,26 @@ if($phpobject === false) {
         <p>본사이트는 전세계 어디서나 BnB 관련 정보를 찾는 사이트입니다.</p>
       </div>
     </div>
-
     <div class="container">
-    
+		<div id="daum_customsearch_wrap"></div>
+    <script type="text/javascript">
+		(function() {
+            window._dcs=window._dcs||{};
+            window._dcs.siteUrl = 'http://example.com';
+            window._dcs.searchOrder = ["site","cafe","blog","image","board","vclip","web","book","knowledge"];
+            window._dcs.searchboxtheme = 'default';
+            window._dcs.searchresulttheme = 'overlay';
+            var dcss = document.createElement('script');
+            dcss.type = 'text/javascript';
+            dcss.async = true;
+            dcss.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//dna.daum.net/include/tools/playground/CustomSearch/cs.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(dcss, s);
+		})();
+	</script>
+	</div>
+    <div class="container">
       <div class="row">
         <?php foreach($phpobject->item as $value) { //start foreache ?>
         <div class="col-md-4" style="height:300px;">

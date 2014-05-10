@@ -3,14 +3,11 @@
 
 //서버페이지로 블로그 오픈 api사용
 $apikey = 'a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3';
-$request = 'http://apis.daum.net/search/blog?apikey='.$apikey.'&q='.urlencode('daum');
-$request1 = 'http://apis.daum.net/search/web?apikey='.$apikey.'&q='.urlencode('daum');
-
+$request = 'http://apis.daum.net/search/blog?apikey='.$apikey.'&q='.urlencode('bnb');
 
 
 //데이터얻기(xml)
 $response = file_get_contents($request);
-$response1 = file_get_contents($request1);
 
 if($response ===false) {
     die('Request failed');
@@ -18,7 +15,6 @@ if($response ===false) {
 
 // 파싱
 $phpobject = simplexml_load_string($response);
-$phpobject1 = simplexml_load_string($response1);
 
 if($phpobject === false) {
     die('Parsing failed');
@@ -49,26 +45,6 @@ if($phpobject === false) {
                     s.parentNode.insertBefore(dcss, s);
                 })();
 </script>
-
-<script type="text/javascript">
-        // 현재 페이지 주소(URL)을 가져올 함수 생성
-        function pageUrl() { 
-          var sHref = location.href;
-          document.getElementById('aDiv').innerHTML = sHref;
-        }
-        // 현재 페이지 주소(URL)에서 쿼리스트링을 가져올 함수 생성
-        function pageQuery() {
-          // window 객체의 location.search 속성으로 쿼리스트링 가져오기
-          var sQuery = location.search;
-            // 쿼리스트링이 있는지 조건문으로 체크
-            if ( sQuery ) {
-              document.getElementById('aDiv').innerHTML = sQuery;
-            } else {
-              document.getElementById('aDiv').innerHTML = '현재 페이지 URL에 쿼리정보가 없습니다.';
-            }
-         }
-      </script>
-
 
 
     <div id="daum_customsearch_wrap"></div>
@@ -101,11 +77,8 @@ if($phpobject === false) {
               <li><a href="#blog">blog</a></li>
               <li><a href="#cafe">cafe</a></li>
               <li><a href="#all">all</a></li>
-              
-            
-
       
-             
+              
               
            
 		<div id="daum_customsearch_wrap"></div>
@@ -116,44 +89,9 @@ if($phpobject === false) {
       </div>
     
 
-    <div id = "web" class="container">
+    <div class="container">
      
       <div class="row">
-        <?php foreach($phpobject1->item as $value) { //start foreache ?>
-        <div class="col-md-4" style="height:300px;">
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo "제목: ".$value->title; ?></h3>
-                </div>
-                <div class="bg-default">
-                    <?php echo "내용: ".$value->description; ?>
-                    <p><a class="btn btn-xs btn-danger" href="<?php echo $value->link; ?>" role="button" target="_blank">View details &raquo;</a></p>
-                </div>
-            </div>
-        </div>
-       
-      <?php } //end foreach   ?>
-      </div>
-      <div id = "blog" class="container">
-      <div  class="row">
-        <?php foreach($phpobject->item as $value) { //start foreache ?>
-        <div class="col-md-4" style="height:300px;">
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo "제목: ".$value->title; ?></h3>
-                </div>
-                <div class="bg-default">
-                    <?php echo "내용: ".$value->description; ?>
-                    <p><a class="btn btn-xs btn-danger" href="<?php echo $value->link; ?>" role="button" target="_blank">View details &raquo;</a></p>
-                </div>
-            </div>
-        </div>
-      </div>
-      <?php } //end foreach   ?>
-      <div id = "cafe" class="container">
-      <div  class="row">
         <?php foreach($phpobject->item as $value) { //start foreache ?>
         <div class="col-md-4" style="height:300px;">
         
@@ -168,30 +106,22 @@ if($phpobject === false) {
             </div>
         </div>
        
-      <?php } //end foreach   ?>
-      
-      </div>
-      <div id = "all" class="container">
-      <div class="row">
-        <?php foreach($phpobject->item as $value) { //start foreache ?>
-        <div class="col-md-4" style="height:300px;">
-        
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo "제목: ".$value->title; ?></h3>
-                </div>
-                <div class="bg-default">
-                    <?php echo "내용: ".$value->description; ?>
-                    <p><a class="btn btn-xs btn-danger" href="<?php echo $value->link; ?>" role="button" target="_blank">View details &raquo;</a></p>
-                </div>
-            </div>
-        </div>
-       
-      <?php } //end foreach   ?>
-      
-
+      <?php } //end foreach   ?> 
       <!-- Example row of columns -->
-      
+      <div class="row">
+        <div class="col-md-4">
+          <h2>웹검색 결과</h2>
+          <p>웹 검색 결과를 표시합니다. 여기서 오픈API를 사용합니다.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>이미지 검색결과</h2>
+          <p>검색 결과를 표시합니다. 여기서 오픈API를 사용합니다.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>기타 검색 결과</h2>
+          <p>검색 결과를 표시합니다. 여기서 오픈API를 사용합니다.</p>
+        </div>
+      </div>
     <!-- 코딩 구역 끝 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -35,11 +35,11 @@ if ($phpobject === false) {
     
     <ul class=" navbar navbar-inverse" role="navigation">
        <h1 style="color:white;float:left;margin-right:20px;">Daum BnB!</h1>
-       <li style="">
-            <h1 style="color:white;float:left;list-style:none;">home</h1>
+       <li style="float:left;">
+            <h1 style="color:white;float:left;list-style:none;textsize:20px;">home</h1>
         </li>
-     
-            <div id="daum_customsearch_wrap"></div>
+        <li style="float:right">
+            <div id="daum_customsearch_wrap" style=""></div>
             <script>
             (function() {
                 window._dcs=window._dcs||{};
@@ -56,29 +56,64 @@ if ($phpobject === false) {
                 s.parentNode.insertBefore(dcss, s);
             })();
             </script>
-        
+        </li>
     <!-- 코딩 구역 시작 -->
     <!-- TODO : 코딩 시작 -->
     </ul>
     
     <!-- 코딩 구역 시작 -->
     <!-- TODO : 코딩 시작 -->
-    <div class="jumbotron">
-      <div class="container">
+    <div class="jumbotron" style="background-color:white;border:1px solid #334455;">
+      <div class="container" style="marin:0 auto;">
         <h1 style="height:200px;float:left;background-image:url('http://focus.chosun.com/upimg/com/10000/c384.jpg');">Daum BnB</h1>
-        <img src="" alt="..." class="img-rounded">
         <p>본사이트는 전세계 어디서나 BnB 관련 정보를 찾는 사이트입니다.</p>
       </div>
     </div>
-    
 
     <div class="container">
       <!-- Example row of columns -->
+
       <div class="row">
+        <div class="col-md-4">
+            <ul class="nav nav-pills nav-stacked" style="width:200px;">
+                <li class="active" style="">
+                    <a href="#"><b style="text-align:center;">home</b></a>
+                </li>
+                <li class="">
+                    <a href="#"><b>Search</b></a>
+                </li>
+                <li class="">
+                    <a href="#"><b>Image</b></a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+            
+
+        
+            <div class="panel panel-default" style="">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>제목</th>
+                    
+                        </tr>
+                    </thead>
+                    <?php foreach($phpobject->channel->item as $value) { //start foreache ?>
+                    <tbody>
+                    </tbody>
+                </table>
+            
+            
+   
+
+      <?php } //end foreach   ?> 
+      </div>
         <?php foreach($phpobject->channel->item as $value) { //start foreache ?>
         <div class="col-md-4" style="height:300px;">
         
-            <div class="panel panel-warning" style="">
+            <div class="panel panel-default" style="">
                 <div class="panel-heading" style="background-color:black;color:white;">
                     <h3 class="panel-title"><?php echo "제목: ".$value->title; ?></h3>
                 </div>
@@ -88,7 +123,10 @@ if ($phpobject === false) {
                 </div>
             </div>
         </div>
+
       <?php } //end foreach   ?> 
+        </div>
+      </div>
       <div class="clear" style="clear:both" />
     </div>
     <!-- 코딩 구역 끝 -->

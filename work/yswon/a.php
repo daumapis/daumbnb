@@ -8,7 +8,7 @@
 //서버페이지로 블로그 오픈API 사용
 $apikey = 'a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3';
 $request = 'http://apis.daum.net/search/blog?apikey='.$apikey.'&q='.urlencode('bnb');
-echo $request;
+//echo $request;
 //데이터 얻기(xml)
 $response = file_get_contents($request);
 
@@ -39,28 +39,53 @@ if ($phpobject === false) {
     <!--script src="/js/bootstrap.min.js"></script-->
 	<script type="text/javascript">
         function search_query() {      
+            var result = '';
         	var query = document.getElementById("query");
-        	var url = "http://apis.daum.net/search/blog?apikey=a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3"
+        	query = query.value;
+        	
+        	if(!query){
+        	    alert("검색어를 입력하세요");
+        	    
+        	    return false;
+        	}
+        	var url = "https://apis.daum.net/search/blog?apikey=a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3"
         	url += "&output=json";
-        	url += "&q=" + query.value;
+        	url += "&q=" + query;
         	url += "&callback=?";
-            console.log(url);
             
             $.getJSON(url,function(data) {
-        	
-        		/*for (var i in data.channel.item)
+        	    console.log(data);
+        		for (var i in data.channel.item)
         		{                
-        			result += "title -> " + data.channel.item[i].title + "<br>";
-        		} */
-        		console.log(data);
+        			//result += "title -> " + data.channel.item[i].title + "<br>";
+        			
+        			
+        		            result += "<div class='col-md-4' style='height:300px;'>";
+                                result += "<div class='panel panel-warning'>";
+                                    result += "<div class='panel-heading'>";
+                                        result += "<h3 class='panel-title'>제목:"  + data.channel.item[i].title; + "</h3>";
+                                    result += "</div>";
+                                    result += "<div class='panel-body'>";
+                                        result += "내용:" + data.channel.item[i].description;
+                                        result += "<p><a class='btn btn-default' href='" + data.channel.item[i].link + "role='button' target='_blank'>View details &raquo;</a></p>";
+                                    result += "</div>";
+                                result += "</div>";
+                            result += "</div>";
+        			
+        			
+        		}
         	}).error(function(XMLHttpRequest, textStatus, errorThrown)
         	{          
         		result = textStatus;
         	}).complete(function(){
-        		$("#test").html(result);                                    
+        		$(".row").html(result);                                    
         	});
         }
 	</script>
+	<style>
+	#query{width:80%;}
+	.cont{width:100%;background-color:#fefbed;padding:50px;}
+	</style>
 	
   </head>
   <body>
@@ -78,7 +103,7 @@ if ($phpobject === false) {
       <!-- Example row of columns -->
       
 	<form id="search_form" action="javascript:search_query();" method="post">
-           <input type="text" size="10" id="query" name="query"/>&nbsp;<input type="submit" >
+           <input type="text" size="10" id="query" name="query" placeholder="검색어를 입력하세요."/>&nbsp;<input type="submit" >
 	</form>
 	
 	<div id="test">
@@ -86,7 +111,13 @@ if ($phpobject === false) {
 	</div>
 	
       <div class="row">
-        <?php foreach($phpobject->item as $value) { //start foreache ?>
+          
+          <div class="bs-callout bs-callout-warning">
+
+      <p class="cont">검색어를 입력하세요</p>
+          
+      <!--
+        <?php// foreach($phpobject->item as $value) { //start foreache ?>
         <div class="col-md-4" style="height:300px;">
         
             <div class="panel panel-warning">
@@ -94,12 +125,13 @@ if ($phpobject === false) {
                     <h3 class="panel-title"><?php echo "제목: ".$value->title; ?></h3>
                 </div>
                 <div class="panel-body">
-                    <?php echo "내용: ".$value->description; ?>
+                    <?php// echo "내용: ".$value->description; ?>
                     <p><a class="btn btn-default" href="<?php echo $value->link; ?>" role="button" target="_blank">View details &raquo;</a></p>
                 </div>
             </div>
         </div>
-      <?php } //end foreach   ?> 
+        -->
+      <?php// } //end foreach   ?> 
       <div class="clear"  style="clear:both"/>
       
     <!-- 코딩 구역 끝 -->
