@@ -22,13 +22,15 @@ Cloud9 Web IDE - https://c9.io/jeongzu/daumbnb-bootcamp2014
 ## 실습참조
 --------------
 HTML - http://getbootstrap.com/getting-started/#examples
-JQuery - http://jquery.com/
+JQuery - http://api.jquery.com/
 
 ## 실습순서
 --------------
 1. Cloud9 가입~~
 2. https://c9.io/jeongzu/dna_openapi_demo 접속
 3. 쓰기 권한 부여
-4. 각자 페이지 만들기(id.php)
+4. 각자 페이지 만들기(/work/id.php)
 5. 코딩
-6. 종료
+6. 완료
+ 
+**절대 다른 파일들은 수정하지 마세요. 로그가 남습니다.**
