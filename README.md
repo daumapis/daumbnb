@@ -5,6 +5,9 @@
 
 ## 최종결과물
 --------------
+![검색 API 예제](/complated1.png)
+![지도 API 예제](/complated2.png)
+
 https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/complated.php
 
 ## 목표
@@ -14,6 +17,7 @@ https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/complated.php
 ## 학습도구
 --------------
 Cloud9 Web IDE - https://c9.io/jeongzu/daumbnb-bootcamp2014
+**가입필요**
 
 ## 실습참조
 --------------
