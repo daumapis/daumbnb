@@ -34,6 +34,7 @@ JQuery - http://api.jquery.com/
 4. 각자 작업폴더 만들기(/work/id)
 5. Hello World!!
 6. 코딩
+https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/xxx/a.php
 7. 완료
 
 ## 팁
