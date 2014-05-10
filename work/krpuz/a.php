@@ -38,7 +38,6 @@ if($phpobject === false) {
     <![endif]-->
   </head>
   <body>
-    <h1>Daum BnB!</h1>
     <!-- 코딩 구역 시작 -->
     <!-- TODO : 코딩 시작 -->
     <div class="alert alert-info">
@@ -83,21 +82,94 @@ if($phpobject === false) {
         </div>
       <?php } //end foreach   ?> 
       <div class="clear" style="clear:both" />
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>웹검색 결과</h2>
-          <p>웹 검색 결과를 표시합니다. 여기서 오픈API를 사용합니다.</p>
-        </div>
-        <div class="col-md-4">
-          <h2>이미지 검색결과</h2>
-          <p>검색 결과를 표시합니다. 여기서 오픈API를 사용합니다.</p>
-        </div>
-        <div class="col-md-4">
-          <h2>기타 검색 결과</h2>
-          <p>검색 결과를 표시합니다. 여기서 오픈API를 사용합니다.</p>
+      <div class="col-sm-4">
+          <div class="list-group" id="bnblist">
+          </div>
         </div>
       </div>
+      <!-- 지도가 표시되는 구역입니다. -->
+      <div id="map" style="width:600px;height:600px;"></div>
+    <!-- 코딩 구역 끝 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=6b96607bfaa8f55d7b6223445d64a60ecc825189" charset="utf-8"></script>
+    <script type="text/javascript"> 
+	var map;
+	
+	//페이지 로드시 실행
+	$( document ).ready(function() {
+	    loadData();
+    });
+    
+	// data/bnblist.json데이터 저장
+	var bnbListData;
+	function loadData()
+	{
+	    $.getJSON( "/data/bnblist.json", function( data ) {
+	        bnbListData = data;
+	        drawList();
+	        //지도그리기(지도API 강의)
+	        drawMap();
+        });
+	}
+	
+	//리스트 출력
+	function drawList()
+	{
+	    $.each(bnbListData.list, function(i, item) {
+            $itemTag = createBnbItem(item.lat,item.lng,item.url, item.name, item.desc);
+            $itemTag.appendTo("#bnblist");
+        });
+	}
+	
+	//리스트 태그 생성
+	function createBnbItem(lat, lng, url, name, desc)
+	{
+	    var aTag = $('<a onclick="return onBnbItem('+lat+','+lng+')" href="'+url+'" class="list-group-item" target="_blank">');
+	    var h4Tag = $('<h4 class="list-group-item-heading">');
+	    h4Tag.text(name);
+	    h4Tag.appendTo(aTag);
+	    var pTag = $('<p class="list-group-item-text">');
+	    pTag.text(desc);
+	    pTag.appendTo(aTag);
+	    return aTag;
+	}
+	
+	//리스트 클릭
+	function onBnbItem(lat,lng)
+	{
+	    map.panTo(new daum.maps.LatLng(lat, lng));
+	    return false;
+	}
+	
+	//지도 그리기
+	function drawMap() {
+
+		map = new daum.maps.Map(document.getElementById('map'), {
+			center: new daum.maps.LatLng(37.537123, 127.005523),
+			level: 4
+		});
+
+	
+
+
+
+		var icon = new daum.maps.MarkerImage(
+			'http://localimg.daum-img.net/localimages/07/2009/map/icon/blog_icon01_on.png',
+			new daum.maps.Size(31, 34),
+			new daum.maps.Point(16,34),
+			"poly",
+			"1,20,1,9,5,2,10,0,21,0,27,3,30,9,30,20,17,33,14,33"
+		);
+		
+		$.each(bnbListData.list, function(i, item) {
+            new daum.maps.Marker({
+				position: points[i],
+				image: icon
+			}).setMap(map);
+        });
+	}
+	</script> 
     <!-- 코딩 구역 끝 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
