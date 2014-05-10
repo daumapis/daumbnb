@@ -1,1 +1,6 @@
-console.log('work script');
+$(function() {
+    
+  console.log('work script');
+  
+});
+

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
-    <!-- URL: https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/work/_sample/index.php -->
+    <title>DAUM API BOOT CAMP</title>
+    <!-- SAMPLEURL: https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/work/_sample/index.php -->
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
@@ -18,11 +18,10 @@
   </head>
   <body>
     <h1>Hello, world!</h1>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../../js/bootstrap.min.js"></script>
-    <script src="scrip.js"></script>    
+    <script src="script.js"></script>    
   </body>
 </html>

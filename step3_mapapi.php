@@ -1,6 +1,13 @@
 <?php
-//서버페이지로 오픈API 사용
-$request = 'http://apis.daum.net/search/blog?apikey=a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3&q='.urlencode('bnb');
+/*
+ STEP3
+ 다음맵 API를 사용하는 에제입니다. SETP2 블로그 api와 연결되서 진행됩니다.
+ - http://dna.daum.net/myapi 에 접속하셔서 지도 apikey를 발급받으세요.
+*/
+
+//서버페이지로 블로그 오픈API 사용
+$apikey = 'a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3';
+$request = 'http://apis.daum.net/search/blog?apikey='.$apikey.'&q='.urlencode('bnb');
 
 //데이터 얻기(xml)
 $response = file_get_contents($request);

@@ -1,5 +1,6 @@
 <?php
-$request = 'http://apis.daum.net/search/blog?apikey=a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3&q='.urlencode('다음');
+$query = urlencode('다음');
+$request = 'http://apis.daum.net/search/blog?apikey=a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3&q='.$query;
 
 // 요청을 수행합니다.
 $xml = file_get_contents($request);
