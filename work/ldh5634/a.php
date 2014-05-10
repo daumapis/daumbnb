@@ -78,7 +78,7 @@ if ($phpobject === false) {
         <div class="col-md-4">
             <ul class="nav nav-pills nav-stacked" style="width:200px;">
                 <li class="active" style="">
-                    <a href="#"><b style="text-align:center;">home</b></a>
+                    <a href="#" style="height:50px;"><b style="text-align:center;">home</b></a>
                 </li>
                 <li class="">
                     <a href="#"><b>Search</b></a>
@@ -87,6 +87,12 @@ if ($phpobject === false) {
                     <a href="#"><b>Map</b></a>
                 </li>
             </ul>
+            
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                     <img src="http://www.investbulgaria.com/re_images/1291639161_BNB_LogoRahmen.gif" alt="..." style="">
+                 </a>
+             </div>
         </div>
         <div class="col-md-8">
             <div class="row">
@@ -101,18 +107,19 @@ if ($phpobject === false) {
                     
                         </tr>
                     </thead>
-                    <?php foreach($phpobject->channel->item as $value) { //start foreache ?>
+                  
                     <tbody>
-                        <?php echo " ".$value->title; ?>
+                     
                     </tbody>
                 </table>
             
             
    
 
-      <?php } //end foreach   ?> 
+
       </div>
-     <div id="map" style="margin:0 auto;margin-bottom:20px;width:600px;height:600px;"></div>
+     <div style="margin:0 auto;border:1px solid black;width:603px;height:603px;margin-bottom:20px;">
+     <div id="map" style="width:600px;height:600px;"></div></div>
     <!-- 코딩 구역 끝 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -171,7 +178,7 @@ if ($phpobject === false) {
 
 		map = new daum.maps.Map(document.getElementById('map'), {
 			center: new daum.maps.LatLng(37.537123, 127.005523),
-			level: 4
+			level: 6
 		});
 
 	
@@ -211,7 +218,6 @@ if ($phpobject === false) {
       <?php } //end foreach   ?> 
         </div>
       </div>
-      
       <div class="clear" style="clear:both" />
       
     </div>

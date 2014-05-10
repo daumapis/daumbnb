@@ -142,10 +142,30 @@ if ($phpobject === false) {
 		);
 		
 		$.each(bnbListData.list, function(i, item) {
-            new daum.maps.Marker({
-				position: points[i],
+            var markerImage = new daum.maps.Marker({
+				position: new daum.maps.LatLng(item.lat,item.lng),
 				image: icon
 			}).setMap(map);
+			
+			var infowindow = new daum.maps.InfoWindow({
+    content: '<p style="margin:7px 22px 7px 12px;font:12px/1.5 sans-serif"><strong>안녕하세요~</strong><br/>다음커뮤니케이션입니다.</p>',
+    removable : true
+  });
+  
+  var markerImage = document.getElementsByTagName("map")[0];
+
+			
+			 markerImage.addEventListener("click", function() {
+                infowindow.open(map, marker);
+            });
+
+            var infowindow_only = new daum.maps.InfoWindow({
+                position: new daum.maps.LatLng(item.lat,item.lng),
+                content: '<p style="margin:7px 12px;font-size:12px">인포윈도우만 띄울 수도 있습니다.</p>'
+                });
+                infowindow_only.open(map);
+
+			
         });
 	}
 	</script> 

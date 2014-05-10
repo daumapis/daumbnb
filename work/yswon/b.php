@@ -132,7 +132,6 @@ if ($phpobject === false) {
 			center: new daum.maps.LatLng(37.537123, 127.005523),
 			level: 4
 		});
-
 	
 
 

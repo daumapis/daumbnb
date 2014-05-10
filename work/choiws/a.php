@@ -126,7 +126,7 @@ if($phpobject ===false){
     <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=6b96607bfaa8f55d7b6223445d64a60ecc825189" charset="utf-8"></script>
     <script type="text/javascript"> 
 	var map;
-	
+
 	//페이지 로드시 실행
 	$( document ).ready(function() {
 	    loadData();
@@ -210,16 +210,16 @@ function setCenter() {
 			}).setMap(map);
         });
 	}
-
-
-	</script> 
-	
-	<body onload="init()"> 
+		<body onload="init()"> 
 	<div id="map" style="width:600px;height:600px;"></div>
 	<form>
 		<button type="button" onclick="setCenter()">중심점 이동하기</button>
 
 </body>
+
+	</script> 
+	
+
   </body>
 </html>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

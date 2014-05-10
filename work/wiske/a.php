@@ -46,6 +46,7 @@ if ($phpobject === false) {
         <p>본사이트는 전세계 어디서나 BnB 관련 정보를 찾는 사이트입니다.</p>
       </div>
     </div>
+    
 
     <div class="container">
       <!-- Example row of columns -->
@@ -134,6 +135,57 @@ if ($phpobject === false) {
 			level: 4
 		});
 	
+	    var zoomControl = new daum.maps.ZoomControl();
+    	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+    	var mapTypeControl = new daum.maps.MapTypeControl();
+    	map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+	
+	    var circle = new daum.maps.Circle({
+		center : new daum.maps.LatLng(37.538779843072824, 127.00200500605618),
+		radius : 100,
+		strokeWeight : 4,
+		strokeColor : "#00ff00"
+    	});
+    	circle.setMap(map);
+    	
+    	var circle = new daum.maps.Circle({
+		center : new daum.maps.LatLng(37.538635699652154, 127.00030778301571),
+		radius : 100,
+		strokeWeight : 4,
+		strokeColor : "#0000ff"
+    	});
+    	circle.setMap(map);
+    	
+    	var circle = new daum.maps.Circle({
+		center : new daum.maps.LatLng(37.5373382594273154, 126.9998325645435),
+		radius : 100,
+		strokeWeight : 4,
+		strokeColor : "#ff0000"
+    	});
+    	circle.setMap(map);
+    	
+    	var circle = new daum.maps.Circle({
+		center : new daum.maps.LatLng(37.53377026138633, 127.00288736856231),
+		radius : 100,
+		strokeWeight : 4,
+		strokeColor : "#0000ff"
+    	});
+    	circle.setMap(map);
+    	
+    	var circle = new daum.maps.Circle({
+		center : new daum.maps.LatLng(37.534941239454476, 127.00920075758009),
+		radius : 100,
+		strokeWeight : 4,
+		strokeColor : "#00ff00"
+    	});
+    	circle.setMap(map);
+    	
+    	var infowindow_only = new daum.maps.InfoWindow({
+            position: new daum.maps.LatLng(37.5367434970359, 127.00491278024688),
+            content: '<p style="margin:7px 12px;font-size:12px">Daum BNB</p>'
+        });
+        infowindow_only.open(map);
+    	
 		var icon = new daum.maps.MarkerImage(
 			'http://localimg.daum-img.net/localimages/07/2009/map/icon/blog_icon01_on.png',
 			new daum.maps.Size(31, 34),

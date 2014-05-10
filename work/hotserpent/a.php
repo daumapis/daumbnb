@@ -1,8 +1,8 @@
 <?php
 /*
- STEP2
- 블로그 API를 사용하는 에제입니다. 
- - http://dna.daum.net/myapi 에 접속하셔서 블로그 apikey를 발급받으세요.
+ STEP3
+ 다음맵 API를 사용하는 에제입니다. SETP2 블로그 api와 연결되서 진행됩니다.
+ - http://dna.daum.net/myapi 에 접속하셔서 지도 apikey를 발급받으세요.
 */
 
 //서버페이지로 블로그 오픈API 사용
@@ -65,7 +65,13 @@ if ($phpobject === false) {
         </div>
       <?php } //end foreach   ?> 
       <div class="clear" style="clear:both" />
-
+      <div class="col-sm-4">
+          <div class="list-group" id="bnblist">
+          </div>
+        </div>
+      </div>
+      <!-- 지도가 표시되는 구역입니다. -->
+      <div id="map" style="width:600px;height:600px;"></div>
     <!-- 코딩 구역 끝 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -85,6 +91,8 @@ if ($phpobject === false) {
 	    $.getJSON( "/data/bnblist.json", function( data ) {
 	        bnbListData = data;
 	        drawList();
+	        //지도그리기(지도API 강의)
+	        drawMap();
         });
 	}
 	
@@ -115,6 +123,34 @@ if ($phpobject === false) {
 	{
 	    map.panTo(new daum.maps.LatLng(lat, lng));
 	    return false;
+	}
+	
+	//지도 그리기
+	function drawMap() {
+
+		map = new daum.maps.Map(document.getElementById('map'), {
+			center: new daum.maps.LatLng(37.537123, 127.005523),
+			level: 4
+		});
+
+	
+
+
+
+		var icon = new daum.maps.MarkerImage(
+			'http://localimg.daum-img.net/localimages/07/2009/map/icon/blog_icon01_on.png',
+			new daum.maps.Size(31, 34),
+			new daum.maps.Point(16,34),
+			"poly",
+			"1,20,1,9,5,2,10,0,21,0,27,3,30,9,30,20,17,33,14,33"
+		);
+		
+		$.each(bnbListData.list, function(i, item) {
+            new daum.maps.Marker({
+				position: new daum.maps.LatLng(item.lat, item.lng),
+				image: icon
+			}).setMap(map);
+        });
 	}
 	</script> 
   </body>

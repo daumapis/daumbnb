@@ -29,6 +29,7 @@ if ($phpobject === false) {
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=10dce8a4419384ec939377157ca9c1ce4e347c74" charset="utf-8"></script>
     <script type="text/javascript">
         function search_query(query, id) {      
             console.log(query);
@@ -51,19 +52,17 @@ if ($phpobject === false) {
         		$("#"+id).html(result);                                    
         	});
         }
-        </script>
-        <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=7336eb3f454e2910146be3072fb677e94c1c4d77" charset="utf-8"></script>
-        <script type="text/javascript"> 
+        
         var map;
-        function init() {
-        	map = new daum.maps.Map(document.getElementById('map'), {
+        function draw_map(query, id) {
+        	map = new daum.maps.Map(document.getElementById(id), {
         		center: new daum.maps.LatLng(37.537123, 127.005523),
         		level: 3
         	});
         
         	// 좌표값들 지정
         	var points = new Array();
-        	points[0] = new daum.maps.LatLng(37.529196714213114, 126.92506196011036);
+        	points[0] = new daum.maps.LatLng(35.56662331020682, 128.1658077956118);
         	points[1] = new daum.maps.LatLng(37.529197714213114, 127.17546196011036);
         	points[2] = new daum.maps.LatLng(37.529217714213114, 126.92526196011036);
         	points[3] = new daum.maps.LatLng(37.529257714213114, 126.92520196011036);
@@ -82,10 +81,9 @@ if ($phpobject === false) {
         	// 좌표가 채워진 LatLngBounds 객체를 이용하여 지도 영역을 확장
         	map.setBounds(bounds);
         }
-        </script> 
+    </script>
   </head>
-  <body onload="init()"> 
-	<div id="map" style="width:600px;height:600px;"></div>
+  <body> 
     <!-- 코딩 구역 시작 -->
     <!-- TODO : 코딩 시작 -->
     <div class="jumbotron">
@@ -124,13 +122,21 @@ if ($phpobject === false) {
                                     ?>', 'results_<?php echo $index?>')" 
                                     
                                     value="<?php 
-                                    //$word = preg_replace ("/[ #\&\+\-%@=\/\\\:;,\.'\"\^`~\_|\!\?\*$#<>()\[\]\{\}]/i", "", $word); 
                                     echo "'".$word."' 웹 검색";
                                     ?>" \></p>
+                                    
+                                <p><input type="button" onClick="draw_map('<?php 
+                                echo $word 
+                                ?>', 'map_<?php echo $index?>')" 
+                                
+                                value="<?php 
+                                echo "'".$word."' 지도 검색";
+                                ?>" \></p>
                             <?php 
                             } //end foreach   ?>
                         </div>
                         <div id="results_<?php echo $index?>"></div>
+                        <div id="map_<?php echo $index?>" style="width:600px;height:600px;"></div>
                         
                     </div>
                     

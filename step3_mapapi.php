@@ -132,13 +132,9 @@ if ($phpobject === false) {
 			center: new daum.maps.LatLng(37.537123, 127.005523),
 			level: 4
 		});
-		var points = [
-   		  	new daum.maps.LatLng(37.538779843072824,127.00200500605618),
-   			new daum.maps.LatLng(37.538635699652154,127.00030778301571),
-   			new daum.maps.LatLng(37.537338259427315,126.9998325645435),
-   			new daum.maps.LatLng(37.53377026138633,127.00288736856231),
-   			new daum.maps.LatLng(37.534941239454476,127.00920075758009)
-   		];
+	
+
+
 
 		var icon = new daum.maps.MarkerImage(
 			'http://localimg.daum-img.net/localimages/07/2009/map/icon/blog_icon01_on.png',

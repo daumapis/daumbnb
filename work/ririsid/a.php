@@ -7,7 +7,7 @@
 
 //서버페이지로 블로그 오픈API 사용
 $apikey = 'a72a4a6edc53aba79886a8ef1ccbb782dda6e6b3';
-$request = 'http://apis.daum.net/search/blog?apikey='.$apikey.'&q='.urlencode('bnb');
+$request = 'http://apis.daum.net/search/blog?apikey='.$apikey.'&q='.urlencode('bnb').'&result='.urlencode('9');
 
 //데이터 얻기(xml)
 $response = file_get_contents($request);
@@ -144,7 +144,7 @@ if ($phpobject === false) {
 		
 		$.each(bnbListData.list, function(i, item) {
             new daum.maps.Marker({
-				position: points[i],
+				position: new daum.maps.LatLng(item.lat, item.lng),
 				image: icon
 			}).setMap(map);
         });

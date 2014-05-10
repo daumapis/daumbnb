@@ -33,7 +33,20 @@ if($phpobject === false) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DaumBnB 1step</title>
 
-    
+    <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=62a17c6d8b7c66317ca7b9c39fd35ec3807368d0 " charset="utf-8"></script>
+<script type="text/javascript">
+function init1() {
+	var p = new daum.maps.LatLng(37.53729488297613, 127.00551022687515);
+	var rc = new daum.maps.RoadviewClient();
+	var rv = new daum.maps.Roadview(document.getElementById("roadview"));
+
+	rc.getNearestPanoId(p, 50, function(panoid) {
+		rv.setPanoId(panoid);
+	});
+	
+}
+</script>
+</head>
     
             
 
@@ -55,6 +68,29 @@ if($phpobject === false) {
             }
          }
       </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=6b96607bfaa8f55d7b6223445d64a60ecc825189" charset="utf-8"></script>
+    <script type="text/javascript"> 
+	var map;
+    function init() {
+	map = new daum.maps.Map(document.getElementById('map'), {
+		center: new daum.maps.LatLng(37.537123, 127.005523)
+	});
+
+	var marker = new daum.maps.Marker({
+		position: new daum.maps.LatLng(37.537123, 127.005523)
+	});
+	var rc = new daum.maps.RoadviewClient();
+	var rv = new daum.maps.Roadview(document.getElementById("roadview"));
+
+	rc.getNearestPanoId(p, 50, function(panoid) {
+		rv.setPanoId(panoid);
+	});
+	
+	marker.setMap(map);
+}
+	</script> 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -64,7 +100,7 @@ if($phpobject === false) {
 
 
 
-  <body  onload="init()" >
+  <body  onload="init()" onload="init1()" >
     <h1>Daum search!</h1>
     <!-- 코딩 구역 시작 -->
     <!-- TODO : 코딩 시작 -->
@@ -139,29 +175,8 @@ if($phpobject === false) {
       <div id = "blog" class="container">
  <div id="map" style="width:600px;height:600px;"></div>
     <!-- 코딩 구역 끝 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=6b96607bfaa8f55d7b6223445d64a60ecc825189" charset="utf-8"></script>
-    <script type="text/javascript"> 
-	var map;
-    function init() {
-	map = new daum.maps.Map(document.getElementById('map'), {
-		center: new daum.maps.LatLng(37.537123, 127.005523)
-	});
-
-	var marker = new daum.maps.Marker({
-		position: new daum.maps.LatLng(37.537123, 127.005523)
-	});
-	var rc = new daum.maps.RoadviewClient();
-	var rv = new daum.maps.Roadview(document.getElementById("roadview"));
-
-	rc.getNearestPanoId(p, 50, function(panoid) {
-		rv.setPanoId(panoid);
-	});
+    
 	
-	marker.setMap(map);
-}
-	</script> 
 	<div id="map"style="width:600px;height:600px;"></div>
       </div>
       

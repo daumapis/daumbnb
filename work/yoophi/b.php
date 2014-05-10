@@ -85,11 +85,13 @@ if ($phpobject === false) {
     
 	// data/bnblist.json데이터 저장
 	var bnbListData;
+	var points = [];
 	function loadData()
 	{
 	    $.getJSON( "/data/bnblist.json", function( data ) {
 	        bnbListData = data;
 	        drawList();
+	        initPoints();
 	        //지도그리기(지도API 강의)
 	        drawMap();
 	        drawInfoWindow();
@@ -105,19 +107,23 @@ if ($phpobject === false) {
         });
 	}
 	
-	function drawInfoWindow() {
-	   // $.each(bnbListData.list, function(i, item) {
-	   // 	  var infowindow_only = new daum.maps.InfoWindow({
-    //             position: new daum.maps.LatLng(item.lat, item.lng),
-    //             content: '<p style="margin:7px 12px;font-size:12px">' + item.name + '</p>'
+    function drawInfoWindow() {
+        $.each(bnbListData.list, function(i, item) {
+            var infowindow_only = new daum.maps.InfoWindow({
+                position: new daum.maps.LatLng(item.lat, item.lng),
+                content: '<p style="margin:7px 12px;font-size:12px; text-align: center;">' + item.name + '</p>'
+            });
+            infowindow_only.open(map);
+        });
+    }
+    
+    function initPoints() {
+        points = [];
+        $.each(bnbListData.list, function(i, item) {
+            points.push(new daum.maps.LatLng(item.lat, item.lng));
+        });
+    }
 
-    // 	    });
-	   // });
-	           // var infowindow_only = new daum.maps.InfoWindow({
-                // position: new daum.maps.LatLng(37.5367434970359, 127.00491278024688),
-                // content: '<p style="margin:7px 12px;font-size:12px">인포윈도우만 띄울 수도 있습니다.</p>'
-	}
-	
 	//리스트 태그 생성
 	function createBnbItem(lat, lng, url, name, desc)
 	{
