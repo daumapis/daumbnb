@@ -133,9 +133,6 @@ if ($phpobject === false) {
 			level: 4
 		});
 	
-
-
-
 		var icon = new daum.maps.MarkerImage(
 			'http://localimg.daum-img.net/localimages/07/2009/map/icon/blog_icon01_on.png',
 			new daum.maps.Size(31, 34),
@@ -145,8 +142,9 @@ if ($phpobject === false) {
 		);
 		
 		$.each(bnbListData.list, function(i, item) {
+		    var latlan = new daum.maps.LatLng(item.lat,item.lng);
             new daum.maps.Marker({
-				position: points[i],
+				position: latlan,
 				image: icon
 			}).setMap(map);
         });
