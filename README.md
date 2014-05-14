@@ -26,13 +26,13 @@ Cloud9 Web IDE - https://c9.io/jeongzu/daumbnb-bootcamp2014
 
 ## 실습참조
 --------------
-HTML - http://getbootstrap.com/getting-started/#examples
-JQuery - http://api.jquery.com/
-STEP 1 - HTML 기본 골격(step1_html.html)
-STEP 2 - 검색API 연동(step2_searchapi.php)
-STEP 3 - 지도API 연동(step3_mapapi.php)
-완성참조 - https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/step3_mapapi.php
-참여자 덧개발 모음 - https://c9.io/jeongzu/daumbnb-bootcamp2014
+* HTML - http://getbootstrap.com/getting-started/#examples
+* JQuery - http://api.jquery.com/
+* STEP 1 - HTML 기본 골격(step1_html.html)
+* STEP 2 - 검색API 연동(step2_searchapi.php)
+* STEP 3 - 지도API 연동(step3_mapapi.php)
+* 완성참조 - https://daumbnb-bootcamp2014-c9-jeongzu.c9.io/step3_mapapi.php
+* 참여자 덧개발 모음 - https://c9.io/jeongzu/daumbnb-bootcamp2014
 
 ## 실습순서
 --------------
